@@ -1,13 +1,50 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Title>Moopel Objects</Title>
+		<Authors>Derek Smith</Authors>
+		<Company>None</Company>
+		<Description>Object Library for Moopel projects</Description>
+		<PackageProjectUrl>derekgsmith.com</PackageProjectUrl>
+		<PackageIcon>MoopelLogo.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<IncludeSymbols>False</IncludeSymbols>
+		<!-- Auto-populate version info from GitVersion -->
+		<Version>$(GitVersion_NuGetVersionV2)</Version>
+		<AssemblyVersion>$(GitVersion_AssemblySemVer)</AssemblyVersion>
+		<FileVersion>$(GitVersion_AssemblySemFileVer)</FileVersion>
+		<InformationalVersion>$(GitVersion_InformationalVersion)</InformationalVersion>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.10" />
-  </ItemGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>embedded</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DebugType>embedded</DebugType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="GitVersion.MsBuild" Version="6.4.0">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.10" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="MoopelLogo.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Update="README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
 </Project>

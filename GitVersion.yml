@@ -1,0 +1,12 @@
+mode: ContinuousDeployment
+branches:
+  master:
+    regex: master
+    increment: patch
+    track-merge-target: true
+  develop:
+    regex: develop
+    increment: minor
+    track-merge-target: true
+ignore:
+  sha: []
