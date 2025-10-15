@@ -1,6 +1,6 @@
 ﻿using MoopelObjects.Entities;
 
-namespace MoopelObjects.Models.Dtos.Login;
+namespace MoopelObjects.Models.Dtos.LoginDtos;
 
 public record LoginReadDto
 {

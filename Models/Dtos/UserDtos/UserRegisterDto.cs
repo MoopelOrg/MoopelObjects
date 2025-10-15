@@ -1,4 +1,4 @@
-﻿namespace MoopelObjects.Models.Dtos.User;
+﻿namespace MoopelObjects.Models.Dtos.UserDtos;
 
 public class UserRegisterDto
 {

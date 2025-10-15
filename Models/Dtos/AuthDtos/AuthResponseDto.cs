@@ -1,4 +1,4 @@
-﻿namespace MoopelObjects.Models.Dtos.Auth;
+﻿namespace MoopelObjects.Models.Dtos.AuthDtos;
 
 public class AuthResponseDto
 {

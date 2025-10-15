@@ -1,4 +1,6 @@
-﻿using MoopelApi.Models.Entities;
+﻿using MoopelObjects.Entities;
+using MoopelObjects.Models.Dtos.LoginDtos;
+using MoopelObjects.Models.Dtos.UserDtos;
 
 namespace MoopelObjects.Models.Dtos;
 

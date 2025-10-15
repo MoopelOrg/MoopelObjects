@@ -1,4 +1,4 @@
-﻿namespace MoopelApi.Models.Dtos.Comparer;
+﻿namespace MoopelObjects.Models.Dtos.UserDtos;
 
 public class UserReadDtoComparer : IEqualityComparer<UserReadDto?>
 {

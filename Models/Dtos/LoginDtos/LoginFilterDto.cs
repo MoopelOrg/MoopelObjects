@@ -1,4 +1,4 @@
-﻿namespace MoopelApi.Models
+﻿namespace MoopelObjects.Models.Dtos.LoginDtos
 {
     public class LoginFilterDto
     {

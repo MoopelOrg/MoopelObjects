@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace MoopelApi.Models;
+namespace MoopelObjects.Models.Dtos.AuthDtos;
 
 public class AuthRequestDto
 {
