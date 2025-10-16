@@ -13,11 +13,7 @@
 		<PackageIcon>MoopelLogo.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<IncludeSymbols>False</IncludeSymbols>
-		<!-- Auto-populate version info from GitVersion -->
-		<Version>$(GitVersion_NuGetVersionV2)</Version>
-		<AssemblyVersion>$(GitVersion_AssemblySemVer)</AssemblyVersion>
-		<FileVersion>$(GitVersion_AssemblySemFileVer)</FileVersion>
-		<InformationalVersion>$(GitVersion_InformationalVersion)</InformationalVersion>
+		<Version>1.0.1</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -29,10 +25,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="GitVersion.MsBuild" Version="6.4.0">
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.10" />
 	</ItemGroup>
 
