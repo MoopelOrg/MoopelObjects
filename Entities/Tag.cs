@@ -17,6 +17,4 @@ public class Tag
 
     [Required, MaxLength(20)]
     public string HexColor { get; set; } = "ffffff";
-
-    public ICollection<Note> Notes { get; set; } = [];
 }

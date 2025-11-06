@@ -1,6 +1,8 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using MoopelApi.Config;
@@ -48,6 +50,44 @@ public class AuthHelper
             Source = authRequest.IsBrowser ? "Browser" : "App",
             IPAddress = authRequest.ClientIP.ToString(),
             DeviceInfo = authRequest.UserAgent
+        };
+    }
+
+    public static AuthRequestDto? GetAuthRequestData(HttpContext context)
+    {
+        var request = context.Request;
+        var connection = context.Connection;
+
+        IPAddress? clientIp = connection.RemoteIpAddress;
+
+        if (clientIp is null)
+        {
+            string? ipString = request.Headers["CF-Connecting-IP"].FirstOrDefault()
+                               ?? request.Headers["X-Forwarded-For"].FirstOrDefault()
+                               ?? connection.RemoteIpAddress?.ToString();
+            IPAddress.TryParse(ipString, out var cloudflareIp);
+            if (cloudflareIp is null)
+            {
+                return null;
+            }
+            else
+            {
+                clientIp = cloudflareIp;
+            }
+        }
+
+        string userAgent = request.Headers["User-Agent"].ToString();
+
+        bool isBrowser = userAgent.Contains("Mozilla", StringComparison.OrdinalIgnoreCase)
+                      || userAgent.Contains("Chrome", StringComparison.OrdinalIgnoreCase)
+                      || userAgent.Contains("Safari", StringComparison.OrdinalIgnoreCase)
+                      || userAgent.Contains("Edge", StringComparison.OrdinalIgnoreCase);
+
+        return new AuthRequestDto
+        {
+            ClientIP = clientIp,
+            IsBrowser = isBrowser,
+            UserAgent = userAgent
         };
     }
 }
