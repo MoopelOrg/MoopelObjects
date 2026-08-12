@@ -1,4 +1,6 @@
-﻿namespace MoopelObjects.Exceptions;
+﻿using Microsoft.AspNetCore.Http;
+
+namespace MoopelObjects.Exceptions;
 
 public sealed class NotFoundException : ApiException
 {
